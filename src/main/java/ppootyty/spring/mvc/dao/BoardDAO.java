@@ -7,9 +7,11 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ppootyty.spring.mvc.vo.BoardVO;
 
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Repository("bdao")
@@ -83,6 +85,7 @@ public class BoardDAO {
 
         return bvo;
     }
+
 
     // selectBoard의 RowMapper 내부 클래스
     private class BoardRowMapper implements RowMapper<BoardVO> {
