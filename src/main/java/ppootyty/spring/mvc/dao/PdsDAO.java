@@ -44,6 +44,7 @@ public class PdsDAO {
         return jdbcTemplate.query(selectPdsSQL, mapper);
     }
 
+    // 글번호 본문글 조회
     public PdsVO selectOnePds(String pno) {
         Object[] params = new Object[] { pno };
 
@@ -52,6 +53,16 @@ public class PdsDAO {
         PdsVO pvo =jdbcTemplate.queryForObject(selectOnePdsSQL,mapper,params);
 
         return pvo;
+    }
+
+    // 글번호로 본문글에 대한 조회수 증가
+    public void updateViewPds(String pno) {
+
+    }
+
+    // 글번호로 첨부파일에 대한 다운로드수 증가
+    public void updateDownPds(String pno) {
+
     }
 
     private class PdsRowMapper implements RowMapper<PdsVO> {

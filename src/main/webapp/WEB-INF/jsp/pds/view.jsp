@@ -44,8 +44,8 @@
                 <tr style="background: #ffffcc">
                     <td colspan="2" class="text-left"
                         style="border-bottom: 3px solid black;">${p.contents}</td></tr>
-                <tr><td class="text-left">첨부1</td><td>${p.fname} (${p.fsize},${p.fdown}회 다운로드 함)</td></tr>
-                <tr><td class="text-left">첨부2</td><td>${p.fname} (${p.fsize},${p.fdown}회 다운로드 함)</td></tr>
+                <tr><td class="text-left">첨부1</td><td> <a href="/pds/pdown.do?f=${p.fname}&pno=${pno}">${p.fname} </a> (${p.fsize}KB,${p.fdown}회 다운로드 함)</td></tr>
+                <tr><td class="text-left">첨부2</td><td>${p.fname} (${p.fsize}KB,${p.fdown}회 다운로드 함)</td></tr>
             </table>
         </div><!-- 본문 -->
 
