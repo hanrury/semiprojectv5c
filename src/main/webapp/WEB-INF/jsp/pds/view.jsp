@@ -1,4 +1,10 @@
 <%@ page  pageEncoding="UTF-8" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%-- 줄바꿈 문자를 newChar 변수에 저장 --%>
+<c:set var="newChar" value="
+" scope="page" />
 
     <!-- 메인영역 시작 -->
     <div id="main">
@@ -36,15 +42,15 @@
                 <tr><th colspan="2"
                     style="border-bottom: 3px solid black;
                            background: #dff0f8">
-                    <h3>${p.title}</h3>
+                    <h3> 제목: ${p.title}</h3>
                 </th></tr>
                 <tr style="background: #ccff99">
-                    <td class="text-left">${p.userid}</td>
-                    <td class="text-right">${p.regdate}/${p.thumbup}/${p.views}</td></tr>
+                    <td class="text-left">아이디 : ${p.userid}</td>
+                    <td class="text-right">등록일 : ${fn:substring(p.regdate,0,10)}/좋아요 : ${p.thumbup}/조회수 : ${p.views}</td></tr>
                 <tr style="background: #ffffcc">
                     <td colspan="2" class="text-left"
-                        style="border-bottom: 3px solid black;">${p.contents}</td></tr>
-                <tr><td class="text-left">첨부1</td><td> <a href="/pds/pdown.do?f=${p.fname}&pno=${pno}">${p.fname} </a> (${p.fsize}KB,${p.fdown}회 다운로드 함)</td></tr>
+                        style="border-bottom: 3px solid black;">${fn:replace(p.contents,newChar,"<br>")}</td></tr>
+                <tr><td class="text-left">첨부1</td><td> <a href="/pds/pdown.do?f=${p.fname}&pno=${p.pno}">${p.fname} </a> (${p.fsize}KB,${p.fdown}회 다운로드 함)</td></tr>
                 <tr><td class="text-left">첨부2</td><td>${p.fname} (${p.fsize}KB,${p.fdown}회 다운로드 함)</td></tr>
             </table>
         </div><!-- 본문 -->
