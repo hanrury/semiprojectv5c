@@ -1,12 +1,11 @@
-package ppootyty.spring.mvc.dao;
+package hanrury.spring.mvc.dao;
 
+import hanrury.spring.mvc.vo.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ppootyty.spring.mvc.vo.BoardVO;
-
 
 
 import java.sql.ResultSet;

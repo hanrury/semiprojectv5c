@@ -1,9 +1,9 @@
-package ppootyty.spring.mvc.service;
+package hanrury.spring.mvc.service;
 
+import hanrury.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ppootyty.spring.mvc.dao.MemberDAO;
-import ppootyty.spring.mvc.vo.MemberVO;
+import hanrury.spring.mvc.dao.MemberDAO;
 
 @Service("msrv")
 public class MemberService {

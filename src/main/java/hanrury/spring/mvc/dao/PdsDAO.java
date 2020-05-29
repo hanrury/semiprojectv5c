@@ -1,10 +1,10 @@
-package ppootyty.spring.mvc.dao;
+package hanrury.spring.mvc.dao;
 
+import hanrury.spring.mvc.vo.PdsVO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ppootyty.spring.mvc.vo.PdsVO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,12 +1,12 @@
-package ppootyty.spring.mvc.controller;
+package hanrury.spring.mvc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import ppootyty.spring.mvc.service.MemberService;
-import ppootyty.spring.mvc.vo.MemberVO;
+import hanrury.spring.mvc.service.MemberService;
+import hanrury.spring.mvc.vo.MemberVO;
 
 @Controller
 public class JoinController {

@@ -1,9 +1,9 @@
-package ppootyty.spring.mvc.service;
+package hanrury.spring.mvc.service;
 
+import hanrury.spring.mvc.vo.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ppootyty.spring.mvc.dao.BoardDAO;
-import ppootyty.spring.mvc.vo.BoardVO;
+import hanrury.spring.mvc.dao.BoardDAO;
 
 import java.util.ArrayList;
 

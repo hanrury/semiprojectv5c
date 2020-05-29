@@ -1,10 +1,11 @@
-package ppootyty.spring.mvc.dao;
+package hanrury.spring.mvc.dao;
 
+import hanrury.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import ppootyty.spring.mvc.vo.MemberVO;
+
 import java.util.ArrayList;
 
 @Repository("mdao")
