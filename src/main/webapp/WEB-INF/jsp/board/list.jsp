@@ -15,6 +15,14 @@
 //...
 //ex) list.do?cp=n : X ~ X - 9
 %>
+
+    <c:set var="cp" value="${param.cp}" />
+
+    <%--만약 cp 값이 null 이면 1로 설정--%>
+    <c:if test="${cp eq null}">
+        <c:set var="cp" value="1" />
+    </c:if>
+
     <fmt:parseNumber var="cp" value="${param.cp}" />
     <fmt:parseNumber var="perPage" value="10" />
     <fmt:parseNumber var="bdcnt" value="${bdcnt}" />
@@ -31,6 +39,8 @@
     <fmt:parseNumber var="startPage" value="${startPage* 10 + 1 }" />
     <c:set var="endPage" value="${startPage + 10 - 1}" />
 
+    <%-- 글번호 계산하기 --%>
+    <c:set var="sbno" value="${bdcnt - (cp-1) * perPage}" />
 
     <!-- 메인영역 시작 -->
     <div id="main">
@@ -72,13 +82,14 @@
                             <th>128</th></tr>
 
                         <c:forEach var="b" items="${bdlist}">
-                            <tr><td>${b.bno}</td>
+                            <tr><td>${sbno}</td>
                             <td><a href="board/view.do?bno=${b.bno}">
                                                 ${b.title}</a></td>
                             <td>${b.userid}</td>
                             <td>${ fn:substring(b.regdate,0,10) }</td>
                             <td>${b.thumbup}</td>
                             <td>${b.views}</td></tr>
+                            <c:set var="sbno" value="${sbno -1}" />
                         </c:forEach>
 
                     </tbody>

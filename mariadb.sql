@@ -83,3 +83,16 @@ order by bno desc limit 20, 10; --3 page
 --startNum? : startNum = (cp - 1) x perPage
 
 SELECT count(bno) bdcnt from board;
+
+--zipcode 지번주소 (2013.2 기준 52144건)
+create table zipcode (
+  zipcode VARCHAR (7),
+  sido VARCHAR (7),
+  gugun VARCHAR (25),
+  dong VARCHAR (65),
+  ri VARCHAR (50),
+  bunji VARCHAR (25),
+  seq VARCHAR(5)
+);
+
+select * from zipcode where dong like '주엽동';
