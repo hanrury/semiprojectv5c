@@ -22,8 +22,9 @@
         <li class="nav-item"><a class="nav-link" href="/join/agree.do">회원가입</a></li>
         <li class="nav-item"><a class="nav-link" href="/board/list.do">게시판</a></li>
         <li class="nav-item"><a class="nav-link" href="/pds/list.do">자료실</a></li>
-        <li class="nav-item"><a class="nav-link" href="/gallery/list.do">갤러리</a></li>
+        <li class="nav-item"><a class="nav-link" href="/yboard/list.do">맛집테스트</a></li>
         <li class="nav-item"><a class="nav-link" href="/admin.do">관리자</a></li>
     </ul>
 </nav>
+
 

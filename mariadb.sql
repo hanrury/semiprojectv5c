@@ -54,3 +54,32 @@ fname1 VARCHAR (50) ,
 fname2 VARCHAR (50) ,
 fname3 VARCHAR (50)
 );
+
+insert into board(title,userid,contents)
+VALUES ('테스트입니다.','xzy123','아잉냉무');
+
+insert into board(title,userid,contents)
+VALUES ('시험용입니다.','abc123','제곧네');
+
+insert into board(title,userid,contents)
+VALUES ('연습용입니다.','popop','아잉냉무!!');
+
+-- 페이징 SQL 문 : limit by
+-- 첫 번째 게시물을 기준으로
+-- 10-1만큼 게시물을 추출해서 출력
+SELECT bno,title,userid,regdate,views FROM board
+order by bno desc limit 0, 10; --1 page
+
+SELECT bno,title,userid,regdate,views FROM board
+order by bno desc limit 10, 10; --2 page
+
+
+SELECT bno,title,userid,regdate,views FROM board
+order by bno desc limit 20, 10; --3 page
+
+-- select bno,title,userid,regdate,views from board
+--order by bno desc limit startNum, 10
+--cp: 1, perPage :10
+--startNum? : startNum = (cp - 1) x perPage
+
+SELECT count(bno) bdcnt from board;

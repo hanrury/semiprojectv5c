@@ -7,6 +7,7 @@ import hanrury.spring.mvc.dao.BoardDAO;
 
 import java.util.ArrayList;
 
+
 @Service("bsrv")
 public class BoardService {
 
@@ -29,12 +30,18 @@ public class BoardService {
         return result;
     }
 
-    public ArrayList<BoardVO> showBoard() {
-        return (ArrayList<BoardVO>)bdao.selectBoard();
+    public ArrayList<BoardVO> showBoard(String cp) {
+        int snum = (Integer.parseInt(cp)-1)*10;
+
+        return (ArrayList<BoardVO>)bdao.selectBoard(snum);
     }
 
     public BoardVO showOneBoard(String bno) {
         return bdao.selectOneBoard(bno);
     }
 
+    // 총 게시물 계산
+    public int countBoard() {
+        return bdao.selectCountBoard();
+    }
 }
