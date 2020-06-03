@@ -25,47 +25,52 @@
                     style="border-bottom: 3px solid black;
                            border-top: 3px solid black">
                     <thead style="background: #dff0d8">
-                        <tr><th style="width: 7%">번호</th>
-                            <th>제목</th>
+                        <%--<tr><th style="width: 7%">번호</th>--%>
+                            <%--<th>제목</th>--%>
                             <th style="width: 12%">이미지</th>
                             <th style="width: 10%">작성일</th>
                             <th style="width: 7%">추천</th>
                             <th style="width: 7%">조회</th></tr>
                     </thead>
                     <tbody>
-                        <tr><th>공지</th>
-                            <th><span class="badge badge-danger">Hot</span>
-                            '다크나이트 라이지즈' 예매권 증정이벤트 실시!!</th>
-                            <th>운영자</th>
-                            <th>2012.07.15</th>
-                            <th>10</th>
-                            <th>128</th></tr>
+                        <%--<tr><th>공지</th>--%>
+                            <%--<th><span class="badge badge-danger">Hot</span>--%>
+                            <%--'다크나이트 라이지즈' 예매권 증정이벤트 실시!!</th>--%>
+                            <%--<th>운영자</th>--%>
+                            <%--<th>2012.07.15</th>--%>
+                            <%--<th>10</th>--%>
+                            <%--<th>128</th></tr>--%>
 
 
                         <%--testing for images--%>
 
-                            <th>
-                                <div img="../../img/cat01.png"></div>
+                            <%--<th>--%>
+                                <%--<div img="../../img/cat01.png"></div>--%>
 
-                            </th>
+                            <%--</th>--%>
 
 
-                        <th>
+                        <tr><th>
                             <div class="row text-center text-lg-left">
-                            <div class="col-lg-3 col-md-4 col-6">
+                            <div class="col-lg-5 col-md-4 col-6" style="align:middle;">
                                 <a href="yboard/view.do?yno=1" class="d-block mb-4 h-100">
                                     <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
                                 </a>
                             </div>
                         </div>
                         </th>
+                        <th>2020.05.31</th>
+                        <th>1</th>
+                        <th>1</th>
+
+                        </tr>
 
                         <th>
                             <div class="row text-center text-lg-left">
                             <div class="col-lg-3 col-md-4 col-6">
-                            <img class="img-fluid img-thumbnail" src="\c:Java/psdupload/test.jpg" alt="\c:Java/psdupload/test.jpg">
+                                <img class="img-fluid img-thumbnail" src="\c:Java/psdupload/test.jpg" alt="\c:Java/psdupload/test.jpg">
                             </div>
-                            </div>
+                        </div>
                         </th>
 
                         <th>
@@ -82,15 +87,15 @@
 
 
 
-                        <c:forEach var="y" items="${ybdlist}">
-                            <tr><td>${y.yno}</td>
-                            <td><a href="yboard/view.do?yno=${y.yno}">
-                                                ${y.title}</a></td>
-                            <%--<td>${b.userid}</td>--%>
-                            <td>${ fn:substring(b.regdate,0,10) }</td>
-                           <%-- <td>${b.thumbup}</td>--%>
-                            <td>${b.views}</td></tr>
-                        </c:forEach>
+                        <%--<c:forEach var="y" items="${ybdlist}">--%>
+                            <%--<tr><td>${y.yno}</td>--%>
+                            <%--<td><a href="yboard/view.do?yno=${y.yno}">--%>
+                                                <%--${y.title}</a></td>--%>
+                            <%--&lt;%&ndash;<td>${b.userid}</td>&ndash;%&gt;--%>
+                            <%--<td>${ fn:substring(b.regdate,0,10) }</td>--%>
+                           <%--&lt;%&ndash; <td>${b.thumbup}</td>&ndash;%&gt;--%>
+                            <%--<td>${b.views}</td></tr>--%>
+                        <%--</c:forEach>--%>
 
                     </tbody>
                 </table>

@@ -8,12 +8,13 @@
         </div> <!-- 타이틀 -->
 
         <div class="row margin1050">
-            <div class="col-6">
+            <div class="col-6"><button type="button" id="updgal"
+                                       class="btn btn-light">
                <h4><i class="fa fa-pencil-square-o"></i>
-                   수정하기</h4>
+                   수정하기</h4> </button>
             </div>
             <div class="col-6 text-right">
-                <button type="button" id="lstbd"
+                <button type="button" id="lstgal"
                         class="btn btn-light">
                     <i class="fa fa-list"> </i>
                     목록으로

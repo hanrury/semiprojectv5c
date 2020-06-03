@@ -124,4 +124,20 @@ public class PdsController {
             e.printStackTrace();
         }
     }
+//
+//    // yboard 에 사진으로 출력하기 위해 테스트진행 - 사진 목록 보기
+//    @RequestMapping(value = "/yboard/list")
+//    public ModelAndView ylist() {
+//
+//        ModelAndView mv = new ModelAndView();
+//
+//        mv.setViewName("layout/layout"); // 뷰이름 지정
+//        mv.addObject("action", "../yboard/list.jsp");
+//
+//        // 목록 불러오기
+//        ArrayList<PdsVO> ylist = psrv.showPds();
+//        mv.addObject("ylist", ylist);
+//
+//        return mv;
+//    }
 }

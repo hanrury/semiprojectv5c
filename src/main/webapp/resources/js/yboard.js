@@ -1,7 +1,7 @@
 $('#ybdregbtn').on('click', function () {
-    if ($('#title').val() == '') {
+    if ($('#title2').val() == '') {
         alert('제목을 입력하세요!!');
-        $('#title').focus();
+        $('#title2').focus();
 
     } else if ($('#userid').val() == '') {
         alert('작성자를 입력하세요!!');

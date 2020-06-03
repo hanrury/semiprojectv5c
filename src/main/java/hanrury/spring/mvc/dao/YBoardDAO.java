@@ -20,6 +20,8 @@ public class YBoardDAO {
     @Value("#{jdbc['insertYBoardSQL']}") private String insertYBoardSQL;
     @Value("#{jdbc['selectYBoardSQL']}") private String selectYBoardSQL;
     @Value("#{jdbc['selectOneYBoardSQL']}") private String selectOneYBoardSQL;
+    @Value("#{jdbc['countYBoardSQL']}") private String countYBoardSQL;
+    @Value("#{jdbc['deleteYBoardSQL']}") private String deleteYBoardSQL;
 
     @Autowired
     public YBoardDAO(JdbcTemplate jdbcTemplate) {
@@ -82,6 +84,23 @@ public class YBoardDAO {
         YBoardVO yvo =jdbcTemplate.queryForObject(selectOneYBoardSQL,mapper,params);
 
         return yvo;
+    }
+
+    // 총 게시물 수 알아내기
+    public int selectCountYBoard() {
+
+        int ybdcnt = jdbcTemplate.queryForObject(countYBoardSQL,Integer.class);
+
+        return ybdcnt;
+    }
+
+    // 게시물 삭제하기
+    public void deleteYBoard(String yno) {
+
+        Object[] params = new Object[] {yno};
+
+        jdbcTemplate.update(deleteYBoardSQL,params);
+
     }
 
 

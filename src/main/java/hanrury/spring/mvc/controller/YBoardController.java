@@ -1,8 +1,6 @@
 package hanrury.spring.mvc.controller;
 
-import hanrury.spring.mvc.service.BoardService;
 import hanrury.spring.mvc.service.YBoardService;
-import hanrury.spring.mvc.vo.BoardVO;
 import hanrury.spring.mvc.vo.YBoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
@@ -24,7 +23,7 @@ public class YBoardController {
 
     // 목록보기
     @RequestMapping(value = "/yboard/list")
-    public ModelAndView list() {
+    public ModelAndView list(String cp) {
 
         ModelAndView mv = new ModelAndView();
 
@@ -32,8 +31,12 @@ public class YBoardController {
         mv.addObject("action", "../yboard/list.jsp");
 
         // 목록 불러오기
-        ArrayList<YBoardVO> ybdlist = ybsrv.showYBoard();
+        ArrayList<YBoardVO> ybdlist = ybsrv.showYBoard(cp);
         mv.addObject("ybdlist", ybdlist);
+
+        // 총게시물 수
+        int ybdcnt = ybsrv.countYBoard();
+        mv.addObject("ybdcnt", ybdcnt);
 
         return mv;
     }
@@ -52,8 +55,14 @@ public class YBoardController {
 
     // 새글쓰기
     @RequestMapping(value = "/yboard/write", method = RequestMethod.POST)
-    public String writeok(YBoardVO ybd) {
+    public String writeok(YBoardVO ybd,  HttpServletRequest req) {
 
+
+        // 업로드 처리
+        //FileUpDownUtil util = new FileUpDownUtil();
+        //Map<String,String> frmdata = util.procUpload(req);
+
+        //서비스 객체로 넘김
         ybsrv.newYBoard(ybd);
 
         return "redirect:/yboard/list";

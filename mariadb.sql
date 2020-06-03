@@ -96,3 +96,25 @@ create table zipcode (
 );
 
 select * from zipcode where dong like '주엽동';
+
+select count(mno) from member where userid = 'abc123';
+
+-- 댓글 시스템
+CREATE TABLE bdreply (
+  rno int PRIMARY KEY auto_increment,
+  reply mediumtext,
+  userid VARCHAR (18),
+  regdate datetime default CURRENT_TIMESTAMP,
+  thumbup int DEFAULT 0,
+  bno int,
+  refno int
+
+);
+
+insert into bdreply (reply, userid,bno,refno)
+values('제곧내','xyz987',1,last_insert_id()+1);
+
+insert into bdreply (reply, userid,bno,refno)
+values('이잉','987xyz',1,last_insert_id()+1);
+
+select * from bdreply;

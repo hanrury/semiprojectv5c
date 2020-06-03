@@ -27,7 +27,7 @@
                 <div class="form-group row">
                     <label class="col-form-label col-2 text-right">
                         제목</label>
-                    <input type="text" id="title" name="title"
+                    <input type="text" id="title2" name="title2"
                            class="form-control col-9">
                 </div><!-- 제목 -->
 

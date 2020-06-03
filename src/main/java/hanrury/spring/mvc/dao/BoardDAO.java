@@ -1,12 +1,12 @@
 package hanrury.spring.mvc.dao;
 
-
 import hanrury.spring.mvc.vo.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
 
 
 import java.sql.ResultSet;
@@ -58,7 +58,7 @@ public class BoardDAO {
     public List<BoardVO> selectBoard(int snum) {
         //String sql = "select bno,title,userid,regdate,thumbup,views from board order by bno desc";
 
-        Object[] params =new Object[] {snum};
+        Object[] params = new Object[]{snum};
 
         RowMapper<BoardVO> mapper = new BoardRowMapper();
         //query 메서드를 통해 결과값을 가져올때
@@ -72,6 +72,12 @@ public class BoardDAO {
         //RowMapper 인터페이스를 구현해서 생성해야함
 
         return jdbcTemplate.query(selectBoardSQL, mapper,params);
+    }
+
+    public int selectCountBoard(){
+        int bdcnt = jdbcTemplate.queryForObject(countBoardSQL,Integer.class);
+
+        return bdcnt;
     }
 
     // 글번호로 선택한 게시물에 대해 모든 컬럼을 조회해서
@@ -91,21 +97,11 @@ public class BoardDAO {
         return bvo;
     }
 
-    // 총 게시물 수 알아내기
-    public int selectCountBoard() {
-
-        int bdcnt = jdbcTemplate.queryForObject(countBoardSQL,Integer.class);
-
-        return bdcnt;
-    }
-
-    // 게시물 삭제하기
+    //게시글 삭제하기
     public void deleteBoard(String bno) {
-
-        Object[] params = new Object[] {bno};
+        Object[]params =new Object[]{bno};
 
         jdbcTemplate.update(deleteBoardSQL,params);
-
     }
 
 

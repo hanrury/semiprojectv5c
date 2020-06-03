@@ -1,5 +1,6 @@
 package hanrury.spring.mvc.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import hanrury.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,53 @@ public class MemberService {
         return result;
     }
 
+    // 우편번호 검색
+    public String findZipcode(String dong) {
+
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("123-456").append(",")
+//                .append("서울").append(",")
+//                .append("종로구").append(",")
+//                .append("창신동").append(",")
+//                .append("987-456번지");
+//
+//        sb.append("{ zip:\"123-45\",").append("sido:\"서울\",")
+//                .append("gugun:\"종로구\",").append("dong:\"창신동\",")
+//                .append("bunji:\"987-456번지\"}");
+//
+//        return sb.toString();
+
+        // JSON : javascript object Notation
+        // 자바스크립트 객체 표기법
+        // 데이터 교환에 사용하는 경량급 데이터 형식
+        // 사람이 읽기 쉽고, 기계가 분석하기도 쉬워
+        // 데이터 교환에 오랫동안 사용했던 XML을 대체하고 있음
+
+
+        /* JSON 데이터는 이름/값으로 구성
+        *  각각의 데이터는 ,로 구분
+        *  하나의 객체는 {}로 정의, 여러 객체들은 []로 정의
+        *  */
+
+        // ObjectMapper 라이브러리를 이용하면 손쉽게 JSON 유형의 데이터를 생성할 수 있음
+
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+
+        try{
+            json = mapper.writeValueAsString(
+                    mdao.selectZipcode(dong) );
+            // 검색한 주소데이터를 json 형식으로 변환
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return json;
+    }
+
+    // 아이디 중복체크
+    public int checkUserid(String uid) {
+        return mdao.selectUserid(uid);
+    }
 }

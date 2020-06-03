@@ -22,4 +22,7 @@
     <!-- 컨트롤러 클래스 지정 -->
     <context:component-scan base-package="hanrury.spring.mvc" />
 
+
+
 </beans>
+

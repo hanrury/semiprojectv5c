@@ -1,12 +1,11 @@
 package hanrury.spring.mvc.service;
 
+import hanrury.spring.mvc.dao.BoardDAO;
 import hanrury.spring.mvc.vo.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import hanrury.spring.mvc.dao.BoardDAO;
 
 import java.util.ArrayList;
-
 
 @Service("bsrv")
 public class BoardService {
@@ -31,7 +30,7 @@ public class BoardService {
     }
 
     public ArrayList<BoardVO> showBoard(String cp) {
-        int snum = (Integer.parseInt(cp)-1)*10;
+        int snum= (Integer.parseInt(cp)-1)*10;
 
         return (ArrayList<BoardVO>)bdao.selectBoard(snum);
     }
@@ -40,12 +39,12 @@ public class BoardService {
         return bdao.selectOneBoard(bno);
     }
 
-    // 총 게시물 계산
+
     public int countBoard() {
         return bdao.selectCountBoard();
     }
 
-    // 게시물 삭제하기
+    //특정 게시글 삭제하기
     public void removeBoard(String bno) {
         bdao.deleteBoard(bno);
     }
