@@ -2,7 +2,9 @@ package hanrury.spring.mvc.controller;
 
 import hanrury.spring.mvc.service.BDReplyService;
 import hanrury.spring.mvc.service.BoardService;
+import hanrury.spring.mvc.service.LoginService;
 import hanrury.spring.mvc.vo.BoardVO;
+import hanrury.spring.mvc.vo.MemberVO;
 import hanrury.spring.mvc.vo.ReplyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +21,8 @@ public class BoardController {
 
     private BoardService bsrv;
     private BDReplyService brsrv;
+    private LoginService lsrv;
+
     @Autowired
     //2개의 멤버변수를 생성자를 통해 DI 받음
     public BoardController(BoardService bsrv,BDReplyService brsrv) {
@@ -33,6 +38,7 @@ public class BoardController {
 
         mv.setViewName("layout/layout"); // 뷰이름 지정
         mv.addObject("action", "../board/list.jsp");
+
 
         // 목록 불러오기
         ArrayList<BoardVO> bdlist = bsrv.showBoard(cp);

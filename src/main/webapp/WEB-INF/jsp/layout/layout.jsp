@@ -40,7 +40,7 @@
                     <div class="form-group row text-center">
                         <label for="userid"
                                class="col-form-label col-4">아이디</label>
-                        <input type="text" id="userid" name="uerid"
+                        <input type="text" id="userid" name="userid"
                                class="form-control col-6">
                     </div>
                     <div class="form-group row text-center">

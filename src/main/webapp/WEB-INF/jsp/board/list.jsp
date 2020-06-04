@@ -51,10 +51,18 @@
 
         <div class="row margin1050">
             <div class="col-12 text-right">
+                <c:if test="${not empty UID}">
                 <button type="button" id="newbd"
                         class="btn btn-light">
                     <i class="fa fa-plus-circle"> </i>
                     새글쓰기
+                    </c:if>
+                    <c:if test="${empty UID}">
+                    <button type="button"
+                            class="btn btn-light" disabled>
+                        <i class="fa fa-plus-circle"> </i>
+                        로그인 후 시도해 주세요
+                    </c:if>
                 </button>
             </div>
         </div><!-- 버튼들 -->

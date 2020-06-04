@@ -118,3 +118,5 @@ insert into bdreply (reply, userid,bno,refno)
 values('이잉','987xyz',1,last_insert_id()+1);
 
 select * from bdreply;
+
+select count(mno) cnt from member where userid = '123abc' and passwd = '987abc';
