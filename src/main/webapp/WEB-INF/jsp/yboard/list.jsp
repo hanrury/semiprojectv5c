@@ -2,6 +2,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
+<c:set var="cp" value="${param.cp}" />
+
+<%--만약 cp 값이 null 이면 1로 설정--%>
+<c:if test="${cp eq null}">
+    <c:set var="cp" value="1" />
+</c:if>
+
+<fmt:parseNumber var="cp" value="${param.cp}" />
+<fmt:parseNumber var="perPage" value="10" />
+<fmt:parseNumber var="bdcnt" value="${bdcnt}" />
+
+<c:set var="totalPage" value="${bdcnt / perPage}" />
+
+<c:if test="${ (bdcnt % perPage) > 0 }" >
+    <c:set var="totalPage" value="${totalPage + 1}" />
+</c:if> <%-- 무조건 올림 처리--%>
+
+<fmt:parseNumber var="totalPage" value="${totalPage}" integerOnly="true" />
+
+<fmt:parseNumber var="startPage" integerOnly="true" value="${((cp -1)/ perPage)}" />  <%-- integer only 를 쓴이유는 실수부라 계산이 안되서 정수부로 나오기 위해--%>
+<fmt:parseNumber var="startPage" value="${startPage* 10 + 1 }" />
+<c:set var="endPage" value="${startPage + 10 - 1}" />
+
+<%-- 글번호 계산하기 --%>
+<c:set var="sbno" value="${bdcnt - (cp-1) * perPage}" />
+
+
     <!-- 메인영역 시작 -->
     <div id="main">
         <div class="margin30">
@@ -25,43 +53,33 @@
                     style="border-bottom: 3px solid black;
                            border-top: 3px solid black">
                     <thead style="background: #dff0d8">
-                        <%--<tr><th style="width: 7%">번호</th>--%>
-                            <%--<th>제목</th>--%>
-                            <th style="width: 12%">이미지</th>
-                            <th style="width: 10%">작성일</th>
-                            <th style="width: 7%">추천</th>
-                            <th style="width: 7%">조회</th></tr>
+
                     </thead>
                     <tbody>
-                        <%--<tr><th>공지</th>--%>
-                            <%--<th><span class="badge badge-danger">Hot</span>--%>
-                            <%--'다크나이트 라이지즈' 예매권 증정이벤트 실시!!</th>--%>
-                            <%--<th>운영자</th>--%>
-                            <%--<th>2012.07.15</th>--%>
-                            <%--<th>10</th>--%>
-                            <%--<th>128</th></tr>--%>
 
+                    <c:forEach var="y" items="${ybdlist}" >
 
-                        <%--testing for images--%>
-
-                            <%--<th>--%>
-                                <%--<div img="../../img/cat01.png"></div>--%>
-
-                            <%--</th>--%>
-
-
-                        <tr><th>
                             <div class="row text-center text-lg-left">
                             <div class="col-lg-5 col-md-4 col-6" style="align:middle;">
-                                <a href="yboard/view.do?yno=1" class="d-block mb-4 h-100">
+                                <a href="/yboard/view.do?yno=${y.yno}" class="d-block mb-4 h-100">
                                     <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">
+                                 ${y.yno}
                                 </a>
                             </div>
+
+                                <div class="row margin1050">
+                                    <div class="col-12">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="/gallery/view?gno=1">
+                                                    <img src="/resources/img/cat01.png" class="img-thumbnail"></a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
                         </div>
-                        </th>
-                        <th>2020.05.31</th>
-                        <th>1</th>
-                        <th>1</th>
+
+                            </c:forEach>
 
                         </tr>
 
@@ -73,29 +91,6 @@
                         </div>
                         </th>
 
-                        <th>
-                            <div>
-                                <c:forEach var="p" items="${plist}">
-                                    <tr>
-                                        <td>${p.fname}</td>
-                                        <td>${p.fsize}</td>
-                                    </tr>
-                                </c:forEach>
-                            </div>
-                        </th>
-                        <%--testing for the images end --%>
-
-
-
-                        <%--<c:forEach var="y" items="${ybdlist}">--%>
-                            <%--<tr><td>${y.yno}</td>--%>
-                            <%--<td><a href="yboard/view.do?yno=${y.yno}">--%>
-                                                <%--${y.title}</a></td>--%>
-                            <%--&lt;%&ndash;<td>${b.userid}</td>&ndash;%&gt;--%>
-                            <%--<td>${ fn:substring(b.regdate,0,10) }</td>--%>
-                           <%--&lt;%&ndash; <td>${b.thumbup}</td>&ndash;%&gt;--%>
-                            <%--<td>${b.views}</td></tr>--%>
-                        <%--</c:forEach>--%>
 
                     </tbody>
                 </table>
@@ -106,30 +101,34 @@
             <div class="col-12">
                 <nav>
                     <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a href="#" class="page-link">이전</a></li>
-                        <li class="page-item active">
-                            <a href="#" class="page-link">1</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">2</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">3</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">4</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">5</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">6</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">7</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">8</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">9</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">10</a></li>
-                        <li class="page-item ">
-                            <a href="#" class="page-link">다음</a></li>
+
+                        <c:if test="${cp > 10}" >
+                            <li class="page-item">
+                                <a href="/yboard/list.do?cp=${cp-10}" class="page-link">이전</a></li>
+                        </c:if>
+
+                        <c:set var="break" value="false"/>
+                        <c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
+
+                            <%--현재 페이지가 총 페이지수 보다 같거나 작으면 출력 계속--%>
+                            <c:if test="${i le totalPage}">
+
+                                <c:if test="${i eq cp}">
+                                    <li class="page-item active">
+                                        <a href="/yboard/list.do?cp=${i}" class="page-link">${i}</a></li>
+                                </c:if>
+                                <c:if test="${i ne cp}">
+                                    <li class="page-item">
+                                        <a href="/yboard/list.do?cp=${i}" class="page-link">${i}</a></li>
+                                </c:if>
+
+                            </c:if>
+                        </c:forEach>
+
+                        <c:if test="${endPage < totalPage}">
+                            <li class="page-item">
+                                <a href="/yboard/list.do?cp=${cp+10}" class="page-link">다음</a></li>
+                        </c:if>
                     </ul>
                 </nav>
             </div>

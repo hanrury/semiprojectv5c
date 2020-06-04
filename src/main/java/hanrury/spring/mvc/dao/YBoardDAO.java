@@ -22,6 +22,7 @@ public class YBoardDAO {
     @Value("#{jdbc['selectOneYBoardSQL']}") private String selectOneYBoardSQL;
     @Value("#{jdbc['countYBoardSQL']}") private String countYBoardSQL;
     @Value("#{jdbc['deleteYBoardSQL']}") private String deleteYBoardSQL;
+    @Value("#{jdbc['updateYViewSQL']}") private String updateYViewSQL;
 
     @Autowired
     public YBoardDAO(JdbcTemplate jdbcTemplate) {
@@ -77,10 +78,7 @@ public class YBoardDAO {
         Object[] params = new Object[] { yno };
 
         RowMapper<YBoardVO> mapper = new BoardOneMapper();
-        //ArrayList<BoardVO> bdlist = (ArrayList<BoardVO>)
-        //       jdbcTemplate.query(sql, mapper, params);
 
-        //return bdlist.get(0);
         YBoardVO yvo =jdbcTemplate.queryForObject(selectOneYBoardSQL,mapper,params);
 
         return yvo;
@@ -147,5 +145,12 @@ public class YBoardDAO {
 
             return yvo;
         }
+    }
+
+    // 글번호로 본문글에 대한 조회수 증가
+    public void updateViewYds(String yno) {
+        Object[] params = new Object[] {yno};
+
+        jdbcTemplate.update(updateYViewSQL, params);
     }
 }

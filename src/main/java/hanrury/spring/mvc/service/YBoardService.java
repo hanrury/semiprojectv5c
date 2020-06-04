@@ -18,13 +18,13 @@ public class YBoardService {
         this.ybdao = ybdao;
     }
 
-    public String newYBoard(YBoardVO ybd/* Map<String , String> frmdata*/) {
+    public String newYBoard(YBoardVO ybd, Map<String , String> frmdata) {
 
         String result = "데이터 입력 실패!";
 
         //첨부파일 정보를 저장
-        //procFormdata2(ybd,frmdata);
-//        ybd.setFdown("0");
+        procFormdata2(ybd,frmdata);
+
         if (ybdao.insertYBoard(ybd))
             result = "데이터 입력 성공!!";
 
@@ -63,12 +63,13 @@ public class YBoardService {
         }
     }
 
-    public ArrayList<YBoardVO> showYBoard(String cp) {
-        int snum = (Integer.parseInt(cp)-1)*10;
+    public ArrayList<YBoardVO> showYBoard() {
+
     return (ArrayList<YBoardVO>)ybdao.selectYBoard();
     }
 
     public YBoardVO showOneYBoard(String yno) {
+        ybdao.updateViewYds(yno);
         return ybdao.selectOneYBoard(yno);
     }
 

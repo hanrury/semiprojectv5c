@@ -79,9 +79,6 @@ public class PdsController {
         mv.setViewName("layout/layout"); // 뷰이름 지정
         mv.addObject("action", "../pds/view.jsp");
 
-        /*testing*/
-        mv.addObject("action", "../yboard/list.jsp");
-        /*testing ends*/
 
         PdsVO p = psrv.showOnePds(pno);
         mv.addObject("p", p);
