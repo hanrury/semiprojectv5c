@@ -2,7 +2,7 @@
 <header><!-- 상단로고/로그인,회원가입버튼 -->
     <div class="row">
         <div class="col-md-6">
-            <h1>Lorem Ipsum</h1>
+            <h1><a href="/index">Lorem Ipsum</a></h1>
         </div>
         <div class="col-md-6 text-right">
             <h1><button type="button"
